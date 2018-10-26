@@ -137,11 +137,11 @@ public class gui {
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Student Name");
-		lblNewLabel_2.setBounds(26, 202, 76, 14);
+		lblNewLabel_2.setBounds(26, 202, 95, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Data Count : ");
-		lblNewLabel_3.setBounds(26, 227, 76, 14);
+		lblNewLabel_3.setBounds(26, 227, 95, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		textFieldLoginID = new JTextField();
@@ -180,7 +180,10 @@ public void actionPerformed(ActionEvent e) {
 						String strUrl = "http://rku.utem.edu.my/webServiceJSON/jsonwebServices.php";
 						JSONArray jArr = makeHttpRequest(strUrl,"POST",params);
 						JSONObject jsnObj=null;
+						String usernamee="";
+						String noid="";
 						String strSetText="";
+						
 						int femaleCount=0;
 						try {
 							for(int i = 0 ;i<jArr.length();i++) {
@@ -225,7 +228,11 @@ public void actionPerformed(ActionEvent e) {
 										" || End Date :"+endDate+
 										" || Room No :"+roomNo+
 										" || hfc cd :"+hfcCd+"\n";
+								usernamee += ""+username;
+								noid +=""+userID;
 							}
+							textFieldLoginID.setText(noid);
+							textFieldStudentName.setText(usernamee);
 							textAreaInformationRetrieved.setText(strSetText);
 							data_count.setText(String.valueOf(femaleCount));
 					
